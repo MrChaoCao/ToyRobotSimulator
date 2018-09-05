@@ -1,0 +1,11 @@
+#board ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+}
+
+#board li {
+  border: solid 1px black;
+  height: 30px;
+  width: 30px;
+}
