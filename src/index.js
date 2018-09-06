@@ -1,3 +1,6 @@
+import Robot from './Robot';
+import Simulator from './Simulator'
+
 document.addEventListener("DOMContentLoaded", () => {
   const commandList = document.getElementById('command-list')
   const board = document.getElementById('board');
@@ -21,7 +24,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const run = document.getElementById('run');
   run.addEventListener('click', () => {
-    Test1.speak();
+    // const Robot = new Robot(undefined, undefined, undefined);
+    const Simulation = new Simulator();
   })
 
   const reset = document.getElementById('reset');
