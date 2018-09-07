@@ -5,7 +5,12 @@ export default class Robot {
       this.f = f;
     }
 
+  move(){
+    this.x += 1;
+    console.log('moving');
+  }
+
   report(){
-    console.log('hey, what is up?');
+    console.log(this.x);
   }
 }

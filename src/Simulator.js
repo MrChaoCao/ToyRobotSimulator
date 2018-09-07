@@ -3,27 +3,26 @@ import Robot from './Robot'
 export default class Simulator {
   constructor(){
     this.commands = document.getElementById('command-list').value.split('\n');
-    this.toyRobot = new Robot(undefined, undefined, undefined);
-    console.log(this.toyRobot);
+    this.toyRobot = new Robot(0, 0, 'North');
+    this.placed = false;
     this.executeCommands();
   }
 
   executeCommands(){
     while (this.commands.length > 0) {
-      let nextCommand = this.commands.shift();
-      this.roboCommander(nextCommand)
+      let nextLine = this.commands.shift();
+      let nextCommand = this.inputToCommand(nextLine)
     }
   }
 
-  roboCommander(command){
-    if (command === 'shout') {
-      this.toyRobot.report();
-    } else {
-      console.log('nah');
+  inputToCommand(userInput){
+    const simpleCommands = {
+      'MOVE': () => this.toyRobot.move(),
+      'REPORT': () => this.toyRobot.report()
     }
-  }
 
-  speak(){
-    console.log('chao');
+    if (simpleCommands.hasOwnProperty(userInput)) {
+      simpleCommands[userInput]()
+    }
   }
 }
