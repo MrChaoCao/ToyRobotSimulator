@@ -34,9 +34,9 @@ export default class Simulator {
     const inputCommand = placeCommand.split(' ')
     const placeLocation = inputCommand[1].split(',')
 
-    this.placeX = placeLocation[0]
-    this.placeY = placeLocation[1]
-    this.placeF = placeLocation[2]
+    this.placeX = parseInt(placeLocation[0])
+    this.placeY = parseInt(placeLocation[1])
+    this.placeF = parseInt(placeLocation[2])
 
     return (
       inputCommand[0] === 'PLACE'
