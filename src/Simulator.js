@@ -34,7 +34,7 @@ export default class Simulator {
   }
 
   validPlaceCommand(placeCommand){
-    if (!placeCommand.includes('PLACE')){
+    if (!placeCommand.includes('PLACE ')){
       return false
     }
 

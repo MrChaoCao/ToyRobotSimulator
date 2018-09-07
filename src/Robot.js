@@ -37,9 +37,35 @@ export default class Robot {
   }
 
   updatePosition(newX, newY, newF){
+    if (this._validMove(newX, newY, newF)){
       this.x = newX;
       this.y = newY;
       this.f = newF;
+      console.log('moving!');
+    }
+  }
+
+  _validMove(newX, newY, newF){
+    return (
+      this._inBounds(newX, newY) && this._validInput(newX, newY, newF)
+    )
+  }
+
+  _validInput(newX, newY, newF){
+    return (
+      typeof(newX) === 'number'
+        && typeof(newY) === 'number'
+        // && this.cardinalDirections.hasOwnProperty(newF)
+    )
+  }
+
+  _inBounds(newX, newY){
+    return (
+      newX >= 0
+        && newX <= 4
+        && newY >= 0
+        && newY <= 4
+    )
   }
 
   report(){
