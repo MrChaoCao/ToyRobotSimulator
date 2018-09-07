@@ -12,12 +12,13 @@ export default class Simulator {
     while (this.commands.length > 0) {
       let nextLine = this.commands.shift();
       let nextCommand = this.inputToCommand(nextLine)
+      console.log('tick');
     }
   }
 
   inputToCommand(userInput){
     const simpleCommands = {
-      'MOVE': () => this.toyRobot.move(),
+      'MOVE': () => this.toyRobot.interpretMove(),
       'REPORT': () => this.toyRobot.report()
     }
 
