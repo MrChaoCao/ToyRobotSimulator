@@ -23,14 +23,21 @@ export default class Simulator {
       'REPORT': () => this.toyRobot.report()
     }
 
-    if (simpleCommands.hasOwnProperty(userInput)) {
+    if (this.placed && simpleCommands.hasOwnProperty(userInput)) {
       simpleCommands[userInput]()
     } else if (this.validPlaceCommand(userInput)) {
+      if (!this.placed) {
+        this.placed = true;
+      }
       this.makePlaceCommand(userInput)
     }
   }
 
   validPlaceCommand(placeCommand){
+    if (!placeCommand.includes('PLACE')){
+      return false
+    }
+
     const inputCommand = placeCommand.split(' ')
     const placeLocation = inputCommand[1].split(',')
 
