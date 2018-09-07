@@ -43,6 +43,7 @@ export default class Robot {
   }
 
   report(){
+    console.log('report');
     console.log(this.x, this.y, this.f);
   }
 }

@@ -25,6 +25,28 @@ export default class Simulator {
 
     if (simpleCommands.hasOwnProperty(userInput)) {
       simpleCommands[userInput]()
+    } else if (this.validPlaceCommand(userInput)) {
+      this.makePlaceCommand(userInput)
     }
   }
+
+  validPlaceCommand(placeCommand){
+    const inputCommand = placeCommand.split(' ')
+    const placeLocation = inputCommand[1].split(',')
+
+    this.placeX = placeLocation[0]
+    this.placeY = placeLocation[1]
+    this.placeF = placeLocation[2]
+
+    return (
+      inputCommand[0] === 'PLACE'
+        && placeLocation.length === 3
+        && this.toyRobot.cardinalDirections.hasOwnProperty(this.placeF)
+    )
+  }
+
+  makePlaceCommand(){
+    this.toyRobot.updatePosition(this.placeX,this.placeY,this.placeF)
+  }
+
 }
