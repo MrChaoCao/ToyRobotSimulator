@@ -5,10 +5,15 @@ export default class Robot {
       this.f = f;
 
       this.cardinalDirections = {
-        'North': [0, 1],
-        'South': [0, -1],
-        'East': [1, 0],
-        'West': [-1, 0]
+        0: [0, 1],
+        90: [1, 0],
+        180: [0, -1],
+        270: [-1, 0]
+      }
+
+      this.relativeDirections = {
+        'RIGHT': 90,
+        'LEFT': -90
       }
     }
 
@@ -17,6 +22,18 @@ export default class Robot {
     const newX = this.x + posChange[0]
     const newY = this.y + posChange[1]
     this.updatePosition(newX, newY, this.f)
+  }
+
+  interpretRotate(leftright) {
+    let newF = this.f + this.relativeDirections[leftright]
+
+    if (newF >= 360) {
+      newF -= 360
+    } else if (newF < 0) {
+      newF += 360
+    }
+
+    this.updatePosition(this.x, this.y, newF)
   }
 
   updatePosition(newX, newY, newF){
