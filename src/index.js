@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     fragment.append(ul);
   }
+  console.log(fragment);
 
   board.append(fragment);
 

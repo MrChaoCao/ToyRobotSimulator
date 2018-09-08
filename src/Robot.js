@@ -15,6 +15,8 @@ export default class Robot {
         'RIGHT': 90,
         'LEFT': -90
       }
+
+      this.toyRobot = document.getElementById('robotToy');
     }
 
   interpretMove() {
@@ -42,7 +44,19 @@ export default class Robot {
       this.y = newY;
       this.f = newF;
       console.log('moving!');
+      this.render()
     }
+  }
+
+  report(){
+    console.log(this.x, this.y, this.f);
+  }
+
+  render(){
+    this.bodyMarginY = 8;
+    this.bodyMarginX
+    document.getElementById('robotToy').style.left = `${this.x * 30 + 1}px`;
+    document.getElementById('robotToy').style.bottom = `${this.y * 30}px`;
   }
 
   _validMove(newX, newY, newF){
@@ -66,9 +80,5 @@ export default class Robot {
         && newY >= 0
         && newY <= 4
     )
-  }
-
-  report(){
-    console.log(this.x, this.y, this.f);
   }
 }
