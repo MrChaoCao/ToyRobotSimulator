@@ -28,10 +28,11 @@ export default class Simulator {
     if (this.placed && simpleCommands.hasOwnProperty(userInput)) {
       simpleCommands[userInput]()
     } else if (this.validPlaceCommand(userInput)) {
+      this.makePlaceCommand(userInput)
       if (!this.placed) {
         this.placed = true;
+        this.toyRobot._unHideRobot();
       }
-      this.makePlaceCommand(userInput)
     }
   }
 

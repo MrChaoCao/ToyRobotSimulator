@@ -60,6 +60,10 @@ export default class Robot {
     document.getElementById('robotToy').style.transform = `rotate(${this.f}deg)`
   }
 
+  _unHideRobot(){
+    document.getElementById('robotToy').style.visibility = 'visible'
+  }
+
   _validMove(newX, newY, newF){
     return (
       this._inBounds(newX, newY) && this._validInput(newX, newY, newF)
