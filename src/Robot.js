@@ -57,6 +57,7 @@ export default class Robot {
     this.bodyMarginX
     document.getElementById('robotToy').style.left = `${this.x * 30 + 1}px`;
     document.getElementById('robotToy').style.bottom = `${this.y * 30}px`;
+    document.getElementById('robotToy').style.transform = `rotate(${this.f}deg)`
   }
 
   _validMove(newX, newY, newF){

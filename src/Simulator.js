@@ -9,10 +9,6 @@ export default class Simulator {
   }
 
   executeCommands(){
-    // while (this.commands.length > 0) {
-    //   let nextLine = this.commands.shift();
-    //   let nextCommand = this.inputToCommand(nextLine)
-    // }
     setInterval( () => {
       if (this.commands.length > 0) {
         let nextLine = this.commands.shift();
