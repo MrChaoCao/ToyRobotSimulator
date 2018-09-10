@@ -34,6 +34,7 @@ body {
   bottom: 0px;
   left: 1px;
   box-sizing: border-box;
+  transition: 0.5s;
 }
 
 #command-list {
