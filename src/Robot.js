@@ -5,10 +5,10 @@ export default class Robot {
       this.f = f;
 
       this.cardinalDirections = {
-        0: [0, 1],
-        90: [1, 0],
-        180: [0, -1],
-        270: [-1, 0]
+        0: [0, 1, 'NORTH'],
+        90: [1, 0, 'EAST'],
+        180: [0, -1, 'SOUTH'],
+        270: [-1, 0, 'WEST']
       }
 
       this.relativeDirections = {
@@ -43,7 +43,6 @@ export default class Robot {
       this.x = newX;
       this.y = newY;
       this.f = newF;
-      console.log('moving!');
       this.render()
     }
   }
@@ -74,7 +73,7 @@ export default class Robot {
     return (
       typeof(newX) === 'number'
         && typeof(newY) === 'number'
-        // && this.cardinalDirections.hasOwnProperty(newF)
+        && this.cardinalDirections.hasOwnProperty(newF)
     )
   }
 

@@ -28,11 +28,11 @@ export default class Simulator {
     if (this.placed && simpleCommands.hasOwnProperty(userInput)) {
       simpleCommands[userInput]()
     } else if (this.validPlaceCommand(userInput)) {
-      this.makePlaceCommand(userInput)
       if (!this.placed) {
         this.placed = true;
         this.toyRobot._unHideRobot();
       }
+      this.makePlaceCommand(userInput)
     }
   }
 
@@ -46,11 +46,13 @@ export default class Simulator {
 
     this.placeX = parseInt(placeLocation[0])
     this.placeY = parseInt(placeLocation[1])
-    this.placeF = parseInt(placeLocation[2])
+    this.placeF = parseInt(this._directionParser(placeLocation[2]))
 
     return (
       inputCommand[0] === 'PLACE'
         && placeLocation.length === 3
+        && this.placeX <= 4
+        && this.placeY <= 4
         && this.toyRobot.cardinalDirections.hasOwnProperty(this.placeF)
     )
   }
@@ -59,4 +61,11 @@ export default class Simulator {
     this.toyRobot.updatePosition(this.placeX,this.placeY,this.placeF)
   }
 
+  _directionParser(directionCommand){
+    return(
+      Object.keys(this.toyRobot.cardinalDirections).find(
+        key => this.toyRobot.cardinalDirections[key][2] === directionCommand
+      )
+    )
+  }
 }
