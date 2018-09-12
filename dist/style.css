@@ -27,15 +27,18 @@ body {
 }
 
 #robotToy {
-  background-color: red;
   height: 29px;
   width: 29px;
   position: absolute;
   bottom: 0px;
   left: 1px;
   box-sizing: border-box;
-  border-top: 1px solid blue;
   visibility: hidden;
+}
+
+.sprite {
+  max-height: 28px;
+  max-width: 28px;
 }
 
 /* #command-list {
