@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const commandList = document.getElementById('command-list')
   const board = document.getElementById('board');
   const fragment = document.createDocumentFragment();
-  // const sim = new Simulator();
 
   for (let i = 0; i < 5; i++) {
     const ul = document.createElement('ul');
@@ -19,18 +18,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     fragment.append(ul);
   }
-  console.log(fragment);
 
   board.append(fragment);
 
   const run = document.getElementById('run');
   run.addEventListener('click', () => {
-    // const Robot = new Robot(undefined, undefined, undefined);
+    console.log('I HEAR YOU');
     const Simulation = new Simulator();
   })
 
   const reset = document.getElementById('reset');
   reset.addEventListener('click', () => {
-    commandList.value = '';
+    // document.getElementById('robotToy').style.visibility = 'hidden'
+    console.log('hiding');
+    // Robot._hideRobot();
+    // commandList.value = '';
+    // const Simulation = new Simulator();
+    location.reload();
   })
 })

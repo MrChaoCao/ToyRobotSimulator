@@ -30,9 +30,10 @@ export default class Simulator {
     } else if (this.validPlaceCommand(userInput)) {
       if (!this.placed) {
         this.placed = true;
-        this.toyRobot._unHideRobot();
+        this.noTransitionPlaceCommand(userInput)
+      } else {
+        this.makePlaceCommand(userInput)
       }
-      this.makePlaceCommand(userInput)
     }
   }
 
@@ -59,6 +60,12 @@ export default class Simulator {
 
   makePlaceCommand(){
     this.toyRobot.updatePosition(this.placeX,this.placeY,this.placeF)
+  }
+
+  noTransitionPlaceCommand(){
+    document.getElementById('robotToy').style.transition = '0s'
+    this.makePlaceCommand()
+    document.getElementById('robotToy').style.transition = '0.5s'
   }
 
   _directionParser(directionCommand){

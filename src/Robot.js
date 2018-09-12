@@ -29,12 +29,12 @@ export default class Robot {
   interpretRotate(leftright) {
     let newF = this.f + this.relativeDirections[leftright]
 
-    if (newF >= 360) {
-      newF -= 360
-    } else if (newF < 0) {
-      newF += 360
-    }
-
+    // if (newF >= 360) {
+    //   newF -= 360
+    // } else if (newF < 0) {
+    //   newF += 360
+    // }
+    console.log('1. interpret rotate this.f', this.f, 'newF', newF);
     this.updatePosition(this.x, this.y, newF)
   }
 
@@ -43,20 +43,25 @@ export default class Robot {
       this.x = newX;
       this.y = newY;
       this.f = newF;
+      console.log('2. update position', this.f);
       this.render()
     }
   }
 
   report(){
-    console.log(this.x, this.y, this.f);
+    console.log(`I am at ${this.x}, ${this.y}, facing ${this.f}`);
   }
 
   render(){
-    this.bodyMarginY = 8;
-    this.bodyMarginX
+    console.log('3. render', this.f);
+    this._unHideRobot();
     document.getElementById('robotToy').style.left = `${this.x * 30 + 1}px`;
     document.getElementById('robotToy').style.bottom = `${this.y * 30}px`;
     document.getElementById('robotToy').style.transform = `rotate(${this.f}deg)`
+  }
+
+  static _hideRobot(){
+    document.getElementById('robotToy').style.visibility = 'hidden'
   }
 
   _unHideRobot(){
@@ -73,7 +78,7 @@ export default class Robot {
     return (
       typeof(newX) === 'number'
         && typeof(newY) === 'number'
-        && this.cardinalDirections.hasOwnProperty(newF)
+        // && this.cardinalDirections.hasOwnProperty(newF)
     )
   }
 
