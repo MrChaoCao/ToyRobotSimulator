@@ -21,16 +21,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   board.append(fragment);
 
+  // Update these methods once we restructure our commands, we should be
+  // making sure the robot refreshes intuitively.
   const run = document.getElementById('run');
   run.addEventListener('click', () => {
-    console.log('I HEAR YOU');
+    Robot._hideRobot();
     const Simulation = new Simulator();
   })
 
   const reset = document.getElementById('reset');
   reset.addEventListener('click', () => {
     // document.getElementById('robotToy').style.visibility = 'hidden'
-    console.log('hiding');
+    // console.log('hiding');
     // Robot._hideRobot();
     // commandList.value = '';
     // const Simulation = new Simulator();

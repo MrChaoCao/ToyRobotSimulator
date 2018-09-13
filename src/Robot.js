@@ -20,7 +20,9 @@ export default class Robot {
     }
 
   interpretMove() {
+    // console.log(this.f);
     const posChange = this.cardinalDirections[this.f]
+    // console.log(posChange);
     const newX = this.x + posChange[0]
     const newY = this.y + posChange[1]
     this.updatePosition(newX, newY, this.f)
@@ -28,13 +30,6 @@ export default class Robot {
 
   interpretRotate(leftright) {
     let newF = this.f + this.relativeDirections[leftright]
-
-    // if (newF >= 360) {
-    //   newF -= 360
-    // } else if (newF < 0) {
-    //   newF += 360
-    // }
-    console.log('1. interpret rotate this.f', this.f, 'newF', newF);
     this.updatePosition(this.x, this.y, newF)
   }
 
@@ -43,17 +38,15 @@ export default class Robot {
       this.x = newX;
       this.y = newY;
       this.f = newF;
-      console.log('2. update position', this.f);
       this.render()
     }
   }
 
   report(){
-    console.log(`I am at ${this.x}, ${this.y}, facing ${this.f}`);
+    console.log(`I am at ${this.x}, ${this.y}, facing ${this.f % 360}`);
   }
 
   render(){
-    console.log('3. render', this.f);
     this._unHideRobot();
     document.getElementById('robotToy').style.left = `${this.x * 30 + 1}px`;
     document.getElementById('robotToy').style.bottom = `${this.y * 30}px`;
