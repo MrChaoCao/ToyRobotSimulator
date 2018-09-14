@@ -51,7 +51,7 @@ export default class Simulator {
       'move': () => this.toyRobot.interpretMove(),
       'left': () => this.rotateCommand(this.rotation[simpleCommand]),
       'right': () => this.rotateCommand(this.rotation[simpleCommand]),
-      'report': () => this.toyRobot.report()
+      'report': () => this.reportCommand()
     }
     simpleCommands[simpleCommand]()
   }
@@ -60,11 +60,34 @@ export default class Simulator {
     this.toyRobot.rotate(degrees)
   }
 
+  reportCommand(){
+    const reportObject = this.toyRobot.report()
+    const reportF = this.degreeToCardinal(reportObject.facing)
+    const reportedText = `I am at ${reportObject.xCoord}, ${reportObject.yCoord}, facing ${reportF}`;
+    document.getElementById('robo-report').innerHTML = reportedText;
+  }
+
+  degreeToCardinal(degrees){
+    let facing;
+    if (degrees > 0) {
+      facing = degrees % 360
+    } else {
+      facing = degrees % 360 + 360
+    }
+    return this.getKeyByValue(this.cardinalDirections, facing);
+  }
+
+  getKeyByValue(object, value){
+    return Object.keys(object).find(
+      key => object[key] === value
+    );
+  }
+
   placeCommandCenter(placeCommandArray){
     const newX = parseInt(placeCommandArray[2]);
     const newY = parseInt(placeCommandArray[3]);
     const newF = parseInt(this.cardinalDirections[ placeCommandArray[4].toLowerCase() ]);
-    console.log('commandArray', newX, newY, newF);
+
     if (this.placed) {
       this.toyRobot.updatePosition(newX, newY, newF)
     } else {

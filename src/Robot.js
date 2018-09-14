@@ -35,7 +35,14 @@ export default class Robot {
   }
 
   report(){
-    console.log(`I am at ${this.x}, ${this.y}, facing ${this.f % 360}`);
+    return(
+      {
+        xCoord: this.x,
+        yCoord: this.y,
+        facing: this.f
+      }
+    )
+    // return `I am at ${this.x}, ${this.y}, facing ${this.f % 360}`;
   }
 
   render(){
