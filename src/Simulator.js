@@ -35,13 +35,13 @@ export default class Simulator {
 
     if (!this.placed) {
       if (placeCommandArray) {
-        this.placeCommandCenter(placeCommandArray)
+        this.placeCommandCenter(placeCommandArray);
       }
     } else {
       if (simpleCommandArray) {
-        this.simpleCommandCenter(simpleCommandArray[1])
+        this.simpleCommandCenter(simpleCommandArray[1].toLowerCase())
       } else if (placeCommandArray) {
-        this.placeCommandCenter(placeCommandArray)
+        this.placeCommandCenter(placeCommandArray);
       }
     }
   }
@@ -63,9 +63,23 @@ export default class Simulator {
   placeCommandCenter(placeCommandArray){
     const newX = parseInt(placeCommandArray[2]);
     const newY = parseInt(placeCommandArray[3]);
-    const newF = parseInt(this.cardinalDirections[placeCommandArray[4]]);
-    this.toyRobot.updatePosition(newX, newY, newF);
-    this.placed = true
+    const newF = parseInt(this.cardinalDirections[ placeCommandArray[4].toLowerCase() ]);
+    console.log('commandArray', newX, newY, newF);
+    if (this.placed) {
+      this.toyRobot.updatePosition(newX, newY, newF)
+    } else {
+      this.animationsOff();
+      this.placed = true
+      this.toyRobot.updatePosition(newX, newY, newF)
+      this.animationsOn();
+    }
+  }
+
+  animationsOn(){
+    document.getElementById('robotToy').style.transition = '0.5s'
+  }
+  animationsOff(){
+    document.getElementById('robotToy').style.transition = '0s'
   }
 
 }

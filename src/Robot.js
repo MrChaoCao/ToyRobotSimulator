@@ -4,23 +4,17 @@ export default class Robot {
       this.y = y;
       this.f = f;
 
-      this.cardinalDirections = {
+      this.moveInstructions = {
         0: [0, 1],
         90: [1, 0],
         180: [0, -1],
         270: [-1, 0]
       }
-
-      this.relativeDirections = {
-        'RIGHT': 90,
-        'LEFT': -90
-      }
-
       this.toyRobot = document.getElementById('robotToy');
     }
 
   interpretMove() {
-    const posChange = this.cardinalDirections[this.f]
+    const posChange = this.moveInstructions[this.f]
     const newX = this.x + posChange[0]
     const newY = this.y + posChange[1]
     this.updatePosition(newX, newY, this.f)
@@ -28,11 +22,6 @@ export default class Robot {
 
   rotate(degrees){
     let newF = this.f + degrees
-    this.updatePosition(this.x, this.y, newF)
-  }
-
-  interpretRotate(leftright) {
-    let newF = this.f + this.relativeDirections[leftright]
     this.updatePosition(this.x, this.y, newF)
   }
 
