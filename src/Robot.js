@@ -5,10 +5,10 @@ export default class Robot {
       this.f = f;
 
       this.cardinalDirections = {
-        0: [0, 1, 'NORTH'],
-        90: [1, 0, 'EAST'],
-        180: [0, -1, 'SOUTH'],
-        270: [-1, 0, 'WEST']
+        0: [0, 1],
+        90: [1, 0],
+        180: [0, -1],
+        270: [-1, 0]
       }
 
       this.relativeDirections = {
@@ -20,12 +20,15 @@ export default class Robot {
     }
 
   interpretMove() {
-    // console.log(this.f);
     const posChange = this.cardinalDirections[this.f]
-    // console.log(posChange);
     const newX = this.x + posChange[0]
     const newY = this.y + posChange[1]
     this.updatePosition(newX, newY, this.f)
+  }
+
+  rotate(degrees){
+    let newF = this.f + degrees
+    this.updatePosition(this.x, this.y, newF)
   }
 
   interpretRotate(leftright) {
@@ -71,7 +74,7 @@ export default class Robot {
     return (
       typeof(newX) === 'number'
         && typeof(newY) === 'number'
-        // && this.cardinalDirections.hasOwnProperty(newF)
+        && newF % 90 === 0
     )
   }
 
