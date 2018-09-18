@@ -18,15 +18,24 @@ export default class Simulator {
       'right': 90,
       'left': -90
     }
+
+    this.robotSprite = document.getElementById('robotToy')
   }
 
   executeCommands(){
     setInterval( () => {
       if (this.commands.length > 0) {
-        let nextLine = this.commands.shift();
-        let nextCommand = this.commandRouter(nextLine)
+        this.commandRouter(this.commands.shift());
+        this.render();
       }
     }, 500);
+  }
+
+  render(){
+    this.toyRobot._unHideRobot();
+    this.robotSprite.style.left = `${this.toyRobot.xCo * 30 + 1}px`;
+    this.robotSprite.style.bottom = `${this.toyRobot.yCo * 30}px`;
+    this.robotSprite.style.transform = `rotate(${this.toyRobot.fCo}deg)`
   }
 
   commandRouter(command){
@@ -46,6 +55,21 @@ export default class Simulator {
     }
   }
 
+  placeCommandCenter(placeCommandArray){
+    const newX = parseInt(placeCommandArray[2]);
+    const newY = parseInt(placeCommandArray[3]);
+    const newF = parseInt(this.cardinalDirections[ placeCommandArray[4].toLowerCase() ]);
+
+    if (this.placed) {
+      this.toyRobot.updatePosition(newX, newY, newF)
+    } else {
+      this.animationsOff();
+      this.placed = true
+      this.toyRobot.updatePosition(newX, newY, newF)
+      this.animationsOn();
+    }
+  }
+
   simpleCommandCenter(simpleCommand){
     const simpleCommands = {
       'move': () => this.toyRobot.interpretMove(),
@@ -62,47 +86,32 @@ export default class Simulator {
 
   reportCommand(){
     const reportObject = this.toyRobot.report()
-    const reportF = this.degreeToCardinal(reportObject.facing)
+    const reportF = this._degreeToCardinal(reportObject.facing)
     const reportedText = `I am at ${reportObject.xCoord}, ${reportObject.yCoord}, facing ${reportF}`;
     document.getElementById('robo-report').innerHTML = reportedText;
   }
 
-  degreeToCardinal(degrees){
+  animationsOn(){
+    this.robotSprite.style.transition = '0.5s'
+  }
+  animationsOff(){
+    this.robotSprite.style.transition = '0s'
+  }
+
+  _degreeToCardinal(degrees){
     let facing;
-    if (degrees > 0) {
+    if (degrees >= 0) {
       facing = degrees % 360
     } else {
       facing = degrees % 360 + 360
     }
-    return this.getKeyByValue(this.cardinalDirections, facing);
+    return this._getKeyByValue(this.cardinalDirections, facing);
   }
 
-  getKeyByValue(object, value){
+  _getKeyByValue(object, value){
     return Object.keys(object).find(
       key => object[key] === value
     );
-  }
-
-  placeCommandCenter(placeCommandArray){
-    const newX = parseInt(placeCommandArray[2]);
-    const newY = parseInt(placeCommandArray[3]);
-    const newF = parseInt(this.cardinalDirections[ placeCommandArray[4].toLowerCase() ]);
-
-    if (this.placed) {
-      this.toyRobot.updatePosition(newX, newY, newF)
-    } else {
-      this.animationsOff();
-      this.placed = true
-      this.toyRobot.updatePosition(newX, newY, newF)
-      this.animationsOn();
-    }
-  }
-
-  animationsOn(){
-    document.getElementById('robotToy').style.transition = '0.5s'
-  }
-  animationsOff(){
-    document.getElementById('robotToy').style.transition = '0s'
   }
 
 }
