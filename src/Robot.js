@@ -36,7 +36,7 @@ export default class Robot {
   report(){
     return(
       {
-        xCoord: this.xCoCo,
+        xCoord: this.xCo,
         yCoord: this.yCo,
         facing: this.fCo
       }
