@@ -86,7 +86,8 @@ export default class Simulator {
 
   reportCommand(){
     const reportObject = this.toyRobot.report()
-    const reportF = this._degreeToCardinal(reportObject.facing)
+    const robotF = this.toyRobot._normalizeAngle(reportObject.facing)
+    const reportF = this._getKeyByValue(this.cardinalDirections, robotF)
     const reportedText = `I am at ${reportObject.xCoord}, ${reportObject.yCoord}, facing ${reportF}`;
     document.getElementById('robo-report').innerHTML = reportedText;
   }
@@ -96,16 +97,6 @@ export default class Simulator {
   }
   animationsOff(){
     this.robotSprite.style.transition = '0s'
-  }
-
-  _degreeToCardinal(degrees){
-    let facing;
-    if (degrees >= 0) {
-      facing = degrees % 360
-    } else {
-      facing = degrees % 360 + 360
-    }
-    return this._getKeyByValue(this.cardinalDirections, facing);
   }
 
   _getKeyByValue(object, value){
