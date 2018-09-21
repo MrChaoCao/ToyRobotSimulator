@@ -10,6 +10,7 @@ export default class Robot {
         180: [0, -1],
         270: [-1, 0]
       }
+
       this.toyRobot = document.getElementById('robotToy');
     }
 
@@ -18,7 +19,6 @@ export default class Robot {
     const posChange = this.moveInstructions[facing]
     const newX = this.xCo + posChange[0]
     const newY = this.yCo + posChange[1]
-    // console.log(newX, newY, this.fCo);
     this.updatePosition(newX, newY, this.fCo)
   }
 
