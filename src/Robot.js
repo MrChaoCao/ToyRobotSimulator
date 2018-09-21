@@ -15,9 +15,7 @@ export default class Robot {
     }
 
   interpretMove() {
-    console.log(this.fCo);
     const facing = this._normalizeAngle(this.fCo)
-    console.log(facing);
     const posChange = this.moveInstructions[facing]
     const newX = this.xCo + posChange[0]
     const newY = this.yCo + posChange[1]
