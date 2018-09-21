@@ -15,7 +15,9 @@ export default class Robot {
     }
 
   interpretMove() {
+    console.log(this.fCo);
     const facing = this._normalizeAngle(this.fCo)
+    console.log(facing);
     const posChange = this.moveInstructions[facing]
     const newX = this.xCo + posChange[0]
     const newY = this.yCo + posChange[1]
@@ -46,12 +48,14 @@ export default class Robot {
   }
 
   _normalizeAngle(degrees){
-    let newAngle;
+    let newAngle = degrees;
 
-    if (degrees >= 0) {
-      newAngle = degrees % 360;
-    } else {
-      newAngle = degrees % 360 + 360;
+    while (newAngle < 0) {
+      newAngle += 360
+    }
+
+    if (newAngle >= 0) {
+      newAngle = newAngle % 360;
     }
 
     return newAngle;
