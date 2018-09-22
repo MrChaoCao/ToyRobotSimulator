@@ -26,7 +26,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const run = document.getElementById('run');
   run.addEventListener('click', () => {
     Robot._hideRobot();
-    const Simulation = new Simulator();
+    const commandList = document.getElementById('command-list')
+    const Simulation = new Simulator(commandList);
   })
 
   const reset = document.getElementById('reset');

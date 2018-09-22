@@ -1,8 +1,8 @@
 import Robot from './Robot'
 
 export default class Simulator {
-  constructor(){
-    this.commands = document.getElementById('command-list').value.split('\n');
+  constructor(commandList){
+    this.commands = commandList.value.split('\n');
     this.toyRobot = new Robot(0, 0, 0);
     this.placed = false;
     this.executeCommands();
