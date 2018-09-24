@@ -1,5 +1,28 @@
+html, body {
+  height: 100%
+}
+
 body {
-  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.graphical-display {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.top-section {
+  display: flex;
+}
+
+#robo-report {
+  width: 100%;
+  text-align: center;
+  align-self: center;
 }
 
 #board {

@@ -14,17 +14,31 @@
   </head>
   <body>
     <script src="main.js"></script>
-    <div id="board">
-       <a href="https://github.com/MrChaoCao/ToyRobotSimulator" target="_blank" id="robotToy">
-         <img class="sprite" src="./assets/Robotocat.png" alt="">
-      </a>
-    </div>
-    <p id="robo-report">I'm Empty</p>
-    <div class="input-field">
-      <textarea id="command-list" name="name" rows="8" cols="80"></textarea>
+
+    <div class="graphical-display">
+
+      <div class="top-section">
+          <div id="board">
+            <a href="https://github.com/MrChaoCao/ToyRobotSimulator" target="_blank" id="robotToy">
+              <img class="sprite" src="./assets/Robotocat.png">
+            </a>
+          </div>
+
+          <p id="robo-report">Robot Report</p>
+      </div>
+
+      <br>
+
+      <div class="bottom-section">
+        <div class="input-field">
+          <textarea id="command-list" name="name" rows="8" cols="80"></textarea>
+        </div>
+
+        <input id="run" type="submit" name="run" value="Run">
+        <input id="reset" type="reset" name="reset" value="Reset">
+
+      </div>
     </div>
     <br>
-    <input id="run" type="submit" name="run" value="Run">
-    <input id="reset" type="reset" name="reset" value="Reset">
   </body>
 </html>
