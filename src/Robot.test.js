@@ -83,20 +83,12 @@ describe('_validMove method approves valid moves and rejects invalid moves', () 
   const testRobot = new Robot(0,0,0);
   describe('_validMove makes the correct calls', () => {
     test('calls _validInput and _inBounds methods', () => {
-      testRobot._inBounds = jest.fn( (newX, newY) => {    return (
-            newX >= 0
-              && newX <= 4
-              && newY >= 0
-              && newY <= 4
-          )});
-      testRobot._validInput = jest.fn( (newX, newY, newF) => {     return (
-            typeof(newX) === 'number'
-              && typeof(newY) === 'number'
-              && newF % 90 === 0
-          ) });
+      const validInputSpy = jest.spyOn(Robot.prototype, '_validInput')
+      const inBounds = jest.spyOn(Robot.prototype, '_inBounds')
+
       testRobot._validMove(2,2,180);
-      expect(testRobot._inBounds).toHaveBeenCalled();
-      expect(testRobot._validInput).toHaveBeenCalled();
+      expect(testRobot._inBounds).toHaveBeenCalledWith(2,2);
+      expect(testRobot._validInput).toHaveBeenCalledWith(2,2 ,180);
     });
   })
   describe('_validInput returns false for invalid input types', () => {
