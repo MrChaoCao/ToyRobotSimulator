@@ -2,7 +2,7 @@ import Robot from './Robot'
 
 export default class Simulator {
   constructor(commandList){
-    this.commands = commandList.value.split('\n');
+    this.commands = commandList.split('\n');
     this.toyRobot = new Robot(0, 0, 0);
     this.placed = false;
     this.executeCommands();
@@ -32,7 +32,7 @@ export default class Simulator {
   }
 
   render(){
-    this.toyRobot._unHideRobot();
+    this._unHideRobot();
     this.robotSprite.style.left = `${this.toyRobot.xCo * 30 + 1}px`;
     this.robotSprite.style.bottom = `${this.toyRobot.yCo * 30}px`;
     this.robotSprite.style.transform = `rotate(${this.toyRobot.fCo}deg)`
@@ -55,18 +55,27 @@ export default class Simulator {
     }
   }
 
-  placeCommandCenter(placeCommandArray){
+  placeParser(placeCommandArray){
     const newX = parseInt(placeCommandArray[2]);
     const newY = parseInt(placeCommandArray[3]);
     const newF = parseInt(this.cardinalDirections[ placeCommandArray[4].toLowerCase() ]);
+    console.log('1', newX, newY, newF);
+    return [newX, newY, newF]
+  }
 
+  placeCommandCenter(placeCommandArray){
+    // const newX = parseInt(placeCommandArray[2]);
+    // const newY = parseInt(placeCommandArray[3]);
+    // const newF = parseInt(this.cardinalDirections[ placeCommandArray[4].toLowerCase() ]);
+    const location = this.placeParser(placeCommandArray)
+    console.log('2', location);
     if (this.placed) {
-      this.toyRobot.updatePosition(newX, newY, newF)
+      this.toyRobot.updatePosition(...location)
     } else {
-      this.animationsOff();
+      // this.animationsOff();
       this.placed = true
-      this.toyRobot.updatePosition(newX, newY, newF)
-      this.animationsOn();
+      this.toyRobot.updatePosition(...location)
+      // this.animationsOn();
     }
   }
 
@@ -88,16 +97,14 @@ export default class Simulator {
     const reportObject = this.toyRobot.report()
     const robotF = this.toyRobot._normalizeAngle(reportObject.facing)
     const reportF = this._getKeyByValue(this.cardinalDirections, robotF)
-    const reportedText = `I am at ${reportObject.xCoord}, ${reportObject.yCoord}, facing ${reportF}`;
-    document.getElementById('robo-report').innerHTML = reportedText;
+    const reportText = `I am at ${reportObject.xCoord}, ${reportObject.yCoord}, facing ${reportF}`;
+    this._renderReport(reportText)
   }
 
-  animationsOn(){
-    this.robotSprite.style.transition = '0.5s'
+  _renderReport(reportText){
+    document.getElementById('robo-report').innerHTML = reportText;
   }
-  animationsOff(){
-    this.robotSprite.style.transition = '0s'
-  }
+
 
   _getKeyByValue(object, value){
     return Object.keys(object).find(
@@ -105,4 +112,19 @@ export default class Simulator {
     );
   }
 
+  _hideRobot(){
+    document.getElementById('robotToy').style.visibility = 'hidden'
+  }
+
+  _unHideRobot(){
+    document.getElementById('robotToy').style.visibility = 'visible'
+  }
+
+  animationsOn(){
+    this.robotSprite.style.transition = '0.5s'
+  }
+
+  animationsOff(){
+    this.robotSprite.style.transition = '0s'
+  }
 }
