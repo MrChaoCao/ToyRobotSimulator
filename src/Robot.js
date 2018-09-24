@@ -10,8 +10,6 @@ export default class Robot {
         180: [0, -1],
         270: [-1, 0]
       }
-
-      this.toyRobot = document.getElementById('robotToy');
     }
 
   interpretMove() {
@@ -80,13 +78,5 @@ export default class Robot {
         && newY >= 0
         && newY <= 4
     )
-  }
-
-  static _hideRobot(){
-    document.getElementById('robotToy').style.visibility = 'hidden'
-  }
-
-  _unHideRobot(){
-    document.getElementById('robotToy').style.visibility = 'visible'
   }
 }
