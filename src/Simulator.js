@@ -32,7 +32,6 @@ export default class Simulator {
   }
 
   render(){
-    this._unHideRobot();
     this.robotSprite.style.left = `${this.toyRobot.xCo * 30 + 1}px`;
     this.robotSprite.style.bottom = `${this.toyRobot.yCo * 30}px`;
     this.robotSprite.style.transform = `rotate(${this.toyRobot.fCo}deg)`
@@ -59,23 +58,18 @@ export default class Simulator {
     const newX = parseInt(placeCommandArray[2]);
     const newY = parseInt(placeCommandArray[3]);
     const newF = parseInt(this.cardinalDirections[ placeCommandArray[4].toLowerCase() ]);
-    console.log('1', newX, newY, newF);
     return [newX, newY, newF]
   }
 
   placeCommandCenter(placeCommandArray){
-    // const newX = parseInt(placeCommandArray[2]);
-    // const newY = parseInt(placeCommandArray[3]);
-    // const newF = parseInt(this.cardinalDirections[ placeCommandArray[4].toLowerCase() ]);
     const location = this.placeParser(placeCommandArray)
-    console.log('2', location);
     if (this.placed) {
       this.toyRobot.updatePosition(...location)
     } else {
-      // this.animationsOff();
-      this.placed = true
+      this._unHideRobot();
       this.toyRobot.updatePosition(...location)
-      // this.animationsOn();
+      this.animationsOn();
+      this.placed = true
     }
   }
 
@@ -112,19 +106,11 @@ export default class Simulator {
     );
   }
 
-  _hideRobot(){
-    document.getElementById('robotToy').style.visibility = 'hidden'
-  }
-
   _unHideRobot(){
     document.getElementById('robotToy').style.visibility = 'visible'
   }
 
   animationsOn(){
     this.robotSprite.style.transition = '0.5s'
-  }
-
-  animationsOff(){
-    this.robotSprite.style.transition = '0s'
   }
 }
