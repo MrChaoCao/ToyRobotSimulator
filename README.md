@@ -1,7 +1,7 @@
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 
 # Toy Robot Simulator
-For live demo click [here!](https://hardcore-ritchie-61f3da.netlify.com/)
+For live demo click <a href="https://hardcore-ritchie-61f3da.netlify.com/" target="_blank">here</a>
 
 The toy robot simulator is a game where the user may move around a toy robot on a tabletop through commands on a webpage.
 
