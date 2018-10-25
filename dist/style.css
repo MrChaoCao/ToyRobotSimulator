@@ -4,13 +4,22 @@ html, body {
 
 body {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-image: linear-gradient(rgba(122, 192, 192, 0.45), rgba(122, 192, 192, 0.45)), url('./assets/gravel.png');
 }
 
-
+.banner {
+  height: 10%;
+  border-bottom: 1px dashed black;
+  position: fixed;
+  top: 0px;
+}
 
 .graphical-display {
+  width: 100%;
+  align-items: center;
   display: inline-flex;
   flex-direction: column;
 }
@@ -19,18 +28,26 @@ body {
   display: flex;
 }
 
-#robo-report {
+.line-break {
+  border-bottom: 1px dashed rgba(0,0,0,0.2);
+  left: 0;
   width: 100%;
+}
+
+#robo-report {
   text-align: center;
   align-self: center;
+  background: #FCF0D2;
+  margin: 2px;
+  box-shadow: 3px 4px 7px grey;
 }
 
 #board {
   position: relative;
   display: inline-flex;
   flex-direction: column;
-  border-bottom: 1px solid black;
-  border-right: 1px solid black;
+  border-bottom: 0.2vmin solid black;
+  border-right: 0.2vmin solid black;
 }
 
 #board ul {
@@ -41,30 +58,32 @@ body {
 
 #board li {
   box-sizing: border-box;
-  border-left: solid 1px black;
-  border-top: solid 1px black;
-  height: 30px;
-  width: 30px;
+  border-left: solid 0.2vmin black;
+  border-top: solid 0.2vmin black;
+  height: 8vmin;
+  width: 8vmin;
 }
 
 #robotToy {
-  height: 29px;
-  width: 29px;
+  z-index: -1;
+  height: 8vmin;
+  width: 8vmin;
   position: absolute;
-  bottom: 0px;
-  left: 1px;
+  bottom: 0vmin;
+  left: 0vmin;
   box-sizing: border-box;
   visibility: hidden;
 }
 
 .sprite {
-  max-height: 28px;
-  max-width: 28px;
+  box-sizing: border-box;
+  max-height: 8vmin;
+  max-width: 8vmin;
 }
 
-/* #command-list {
-  margin-top: 20px;
-} */
+#command-list {
+  background: #f6efdf;
+}
 
 /*
 #board {

@@ -32,8 +32,8 @@ export default class Simulator {
   }
 
   render(){
-    this.robotSprite.style.left = `${this.toyRobot.xCo * 30 + 1}px`;
-    this.robotSprite.style.bottom = `${this.toyRobot.yCo * 30}px`;
+    this.robotSprite.style.left = `${this.toyRobot.xCo * 8}vmin`;
+    this.robotSprite.style.bottom = `${this.toyRobot.yCo * 8}vmin`;
     this.robotSprite.style.transform = `rotate(${this.toyRobot.fCo}deg)`
   }
 
