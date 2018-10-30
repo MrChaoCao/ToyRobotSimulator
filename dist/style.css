@@ -11,6 +11,10 @@ body {
 }
 
 .banner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
   height: 10%;
   border-bottom: 1px dashed black;
   position: fixed;
@@ -26,6 +30,8 @@ body {
 
 .top-section {
   display: flex;
+  width: 100%;
+  justify-content: space-evenly;
 }
 
 .line-break {
@@ -38,7 +44,10 @@ body {
   text-align: center;
   align-self: center;
   background: #FCF0D2;
-  margin: 2px;
+  border: 1px dashed grey;
+  padding: 3vmin 0vmin;
+  width: 35%;
+  height: 35%;
   box-shadow: 3px 4px 7px grey;
 }
 
