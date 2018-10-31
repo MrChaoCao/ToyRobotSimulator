@@ -10,7 +10,7 @@
   <body>
     <div class="banner">
       <a href="https://github.com/MrChaoCao/ToyRobotSimulator" target="_blank">Github</a>
-      <a href="#">Instructions</a>
+      <a href="#instructions">Instructions</a>
       <a href="http://chaocao.info/" target="_blank">About Me</a>
     </div>
     <div class="graphical-display">
@@ -21,7 +21,7 @@
             </a>
           </div>
           <p id="robo-report">Robot Report</p>
-      </div>
+      </div> <!-- top-section -->
 
       <br>
       <div class="line-break"></div>
@@ -38,9 +38,53 @@
         <input id="run" type="submit" name="run" value="Run">
         <input id="reset" type="reset" name="reset" value="Reset">
 
-      </div>
+      </div> <!-- bottom-section -->
 
-    </div>
+
+    </div> <!-- graphical display -->
     <br>
+    <div id="instructions">
+      <h1>Instructions</h1>
+      The toy robot simulator is a game where the user may move around a toy robot on a tabletop through commands on a webpage.
+
+      <ul> Rules
+        <li>
+          The robot moves on a zero-indexed grid of 5 units by 5 units.
+        </li>
+        <li>
+          The robot may move freely on the board but will ignore any commands that cause it to fall off the board.
+        </li>
+      </ul>
+
+      <ol> The robot will respond to any of one the following five commands.
+        <li>PLACE X,Y,F</li>
+        <li>MOVE</li>
+        <li>LEFT</li>
+        <li>RIGHT</li>
+        <li>REPORT</li>
+      </ol>
+
+      <ul>
+        <li>
+          Place commands will put the robot on the table at any legal position (X, Y) facing F.
+        </li>
+        <li>
+          Until the Robot is given a valid place command it will ignore all other commands.
+        </li>
+        <li>
+          After the robot has been placed, it will respond to any valid command given to it as long as the command does not cause it to fall off the board. This includes subsequent place commands.
+        </li>
+        <li>
+          Move commands will move the robot one unit forward in the direction it is facing.
+        </li>
+        <li>
+          Left and Right commands will rotate the robot 90 degrees in the appropriate direction while keeping X,Y position fixed.
+        </li>
+        <li>
+          Report will announce the X,Y,F of the robot at the current time.
+        </li>
+      </ul>
+
+    </div> <!-- Instructions -->
   </body>
 </html>
