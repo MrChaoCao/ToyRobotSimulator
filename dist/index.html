@@ -15,42 +15,43 @@
       <a class="nav-link" href="#instructions">Instructions</a>
       <a class="nav-link" href="http://chaocao.info/" target="_blank">About Me</a>
     </div>
+
     <div class="not-banner">
       <div class="graphical-display">
         <div class="top-section">
-          <div id="board">
-            <a href="https://github.com/MrChaoCao/ToyRobotSimulator" target="_blank" id="robotToy">
-              <img class="sprite" src="./assets/Robotocat.png">
-            </a>
+          <div class="board-card">
+            <div id="board">
+              <a href="https://github.com/MrChaoCao/ToyRobotSimulator" target="_blank" id="robotToy">
+                <img class="sprite" src="./assets/Robotocat.png">
+              </a>
+            </div>
           </div>
           <p id="robo-report">Robot Report</p>
         </div> <!-- top-section -->
 
         <br>
-        <div class="line-break"></div>
+        <!-- <div class="line-break"></div> -->
         <br>
-        <div class="line-break"></div>
+        <!-- <div class="line-break"></div> -->
         <br>
-        <!-- <hr class="line-break"> -->
 
         <div class="bottom-section">
           <div class="input-field">
             <textarea id="command-list" name="name" rows="8" cols="80"></textarea>
           </div>
-
-          <input id="run" type="submit" name="run" value="Run">
-          <input id="reset" type="reset" name="reset" value="Reset">
-
+          <div class="buttons">
+            <div class="border-box">
+              <input class="button" id="run" type="submit" value="RUN">
+            </div>
+            <div class="border-box">
+              <input class="button" id="reset" type="reset" value="RESET">
+            </div>
+          </div>
         </div> <!-- bottom-section -->
-
-
       </div> <!-- graphical display -->
       <br>
       <div id="instructions">
-        <h1>Instructions</h1>
-        The toy robot simulator is a game where the user may move around a toy robot on a tabletop through commands on a webpage.
-
-        <ul> <h2>Rules</h2>
+        <ul> <h2>Instructions</h2>
           <li>
             The robot moves on a zero-indexed grid of 5 units by 5 units.
           </li>
@@ -69,7 +70,7 @@
 
         <ul>
           <li>
-            Place commands will put the robot on the table at any legal position (X, Y) facing F.
+            Place commands will put the robot on the table at any legal position [X, Y] facing F.
           </li>
           <li>
             Until the Robot is given a valid place command it will ignore all other commands.

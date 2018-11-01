@@ -11,10 +11,11 @@ body {
 }
 
 .banner {
+  font-size: 1.8em;
   z-index: 2;
   position: fixed;
   top: 0px;
-  height: 10vh;
+  height: 13vh;
   width: 100%;
   display: flex;
   align-items: center;
@@ -31,7 +32,7 @@ body {
 }
 
 .not-banner {
-  margin-top: 12vh;
+  margin-top: 14vh;
 }
 
 .graphical-display {
@@ -80,6 +81,13 @@ h2 {
   box-shadow: 3px 4px 7px grey;
 }
 
+.board-card {
+  z-index: -3;
+  background-color: #f1efef;
+  border: 15px solid white;
+
+}
+
 #board {
   position: relative;
   display: inline-flex;
@@ -103,7 +111,7 @@ h2 {
 }
 
 #robotToy {
-  z-index: -1;
+  z-index: -2;
   height: 8vmin;
   width: 8vmin;
   position: absolute;
@@ -113,6 +121,42 @@ h2 {
   visibility: hidden;
 }
 
+.bottom-section{
+  display: flex;
+  flex-direction: column;
+}
+
+.border-box {
+  border: 2px solid black;
+  box-sizing: border-box;
+  margin: 1vmin 2vmin 2vmin 0vmin;
+}
+
+.buttons {
+  display:flex;
+}
+
+.button {
+  color: white;
+  letter-spacing: .12em;
+  padding: 2vmin 0vmin;
+  width: 100px;
+  border-radius: 2px;
+}
+
+.button:hover {
+  color: black;
+}
+
+#run {
+  background-color: #F05340;
+}
+
+#reset{
+  background-color: #1680A6;
+}
+
+
 .sprite {
   box-sizing: border-box;
   max-height: 8vmin;
@@ -121,4 +165,6 @@ h2 {
 
 #command-list {
   background: #f6efdf;
+  width: 45vw;
+  height: 25vh;
 }
