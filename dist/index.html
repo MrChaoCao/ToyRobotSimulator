@@ -37,7 +37,13 @@
 
         <div class="bottom-section">
           <div class="input-field">
-            <textarea id="command-list" name="name" rows="8" cols="80"></textarea>
+            <textarea id="command-list" name="name" rows="8" cols="80" placeholder="Try typing:
+            &#10; place 0,0,North
+            &#10; report
+            &#10; right
+            &#10; move
+            &#10; left
+            &#10; report"></textarea>
           </div>
           <div class="buttons">
             <div class="border-box">
@@ -51,44 +57,47 @@
       </div> <!-- graphical display -->
       <br>
       <div id="instructions">
-        <ul> <h2>Instructions</h2>
-          <li>
-            The robot moves on a zero-indexed grid of 5 units by 5 units.
-          </li>
-          <li>
-            The robot may move freely on the board but will ignore any commands that cause it to fall off the board.
-          </li>
-        </ul>
-
-        <ol> The robot will respond to any of one the following five commands.
-          <li>PLACE X,Y,F</li>
-          <li>MOVE</li>
-          <li>LEFT</li>
-          <li>RIGHT</li>
-          <li>REPORT</li>
-        </ol>
-
-        <ul>
-          <li>
-            Place commands will put the robot on the table at any legal position [X, Y] facing F.
-          </li>
-          <li>
-            Until the Robot is given a valid place command it will ignore all other commands.
-          </li>
-          <li>
-            After the robot has been placed, it will respond to any valid command given to it as long as the command does not cause it to fall off the board. This includes subsequent place commands.
-          </li>
-          <li>
-            Move commands will move the robot one unit forward in the direction it is facing.
-          </li>
-          <li>
-            Left and Right commands will rotate the robot 90 degrees in the appropriate direction while keeping X,Y position fixed.
-          </li>
-          <li>
-            Report will announce the X,Y,F of the robot at the current time.
-          </li>
-        </ul>
-
+        <h1>Instructions</h1>
+        <div class="instruction-text">
+          <div class="left-instructions">
+            <ol>
+              <h2>Commands</h2>
+              <li>place X,Y,facing</li>
+              <li>move</li>
+              <li>left</li>
+              <li>right</li>
+              <li>report</li>
+            </ol>
+          </div>
+          <div class="right-instructions">
+            <ul> <h2>Rules</h2>
+              <li>
+                The robot moves on a zero-indexed grid of 5 units by 5 units.
+              </li>
+              <li>
+                The robot may move freely on the board but will ignore any commands that cause it to fall off the board.
+              </li>
+              <li>
+                Place commands will put the robot on the table at any legal position [X, Y] facing F.
+              </li>
+              <li>
+                Until the Robot is given a valid place command it will ignore all other commands.
+              </li>
+              <li>
+                After the robot has been placed, it will respond to any valid command given to it as long as the command does not cause it to fall off the board. This includes subsequent place commands.
+              </li>
+              <li>
+                Move commands will move the robot one unit forward in the direction it is facing.
+              </li>
+              <li>
+                Left and Right commands will rotate the robot 90 degrees in the appropriate direction while keeping X,Y position fixed.
+              </li>
+              <li>
+                Report will announce the X,Y,F of the robot at the current time.
+              </li>
+            </ul>
+          </div>
+        </div>
       </div> <!-- Instructions -->
 
     </div> <!-- not banner-->
