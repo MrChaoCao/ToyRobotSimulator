@@ -8,10 +8,10 @@ export default class Simulator {
     this.executeCommands();
 
     this.cardinalDirections = {
-      'north': 0,
-      'east': 90,
-      'south': 180,
-      'west': 270
+      'North': 0,
+      'East': 90,
+      'South': 180,
+      'West': 270
     }
 
     this.rotation = {
